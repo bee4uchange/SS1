@@ -17,11 +17,10 @@ def main():
     check = ['A', 'B', 'C', 'D']
     total = 1
     for i in range(len(ques)):
-        print(ques[i])
         if ques[i] == '':
             total += 1
             while True:
-                in_ = input('Câu trả lời của bạn: ')
+                in_ = input('---Câu trả lời của bạn: ')
                 in_ = in_.upper()
                 if in_.isalpha() == False:
                     print('Điền A,B,C hoặc D')
@@ -34,10 +33,11 @@ def main():
             ans.append(in_)
             print()
         else:
+            print(ques[i])
             continue
     print()
     while True:
-        in_ = input('Câu trả lời của bạn: ')
+        in_ = input('---Câu trả lời của bạn: ')
         in_ = in_.upper()
         if in_.isalpha() == False:
             print('Điền A,B,C hoặc D')
