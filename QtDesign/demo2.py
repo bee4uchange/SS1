@@ -88,6 +88,10 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+
+
+
+
         self.startButton.clicked.connect(self.displayQues)
 
         self.nextButton.clicked.connect(self.next)
