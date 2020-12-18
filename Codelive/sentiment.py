@@ -58,7 +58,6 @@ def func3():
     print('Maximum score is', min(find.items(), key=operator.itemgetter(1))[1], 'for',
           min(find.items(), key=operator.itemgetter(1))[0])
 
-
 def func4():
     f = open("positive.txt", "w")
 
@@ -66,6 +65,12 @@ def func4():
     for k in key:
         t = round((score[k] / freq[k]), 2)
         find[k] = t
+    if rating(find[list(find.keys())[1]]) == 'positive':
+        f.write(find[list(find.keys())[0]])
+        f.close()
+
+
+
 
 
 def rating(s):
