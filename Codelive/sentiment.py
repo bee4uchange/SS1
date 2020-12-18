@@ -1,6 +1,9 @@
+import operator
+
 score = {}
 freq = {}
 find = {}
+
 
 def main():
     start()
@@ -28,8 +31,6 @@ def read():
                 find[j] = 0
 
 
-
-
 def func1(i):
     scr = round((score[i] / freq[i]), 2)
     return scr
@@ -45,15 +46,35 @@ def func2():
     scr = round((sm / fr), 2)
     return scr
 
+
 def func3():
     key = list(score.keys())
     for k in key:
         t = round((score[k] / freq[k]), 2)
         find[k] = t
 
-    dict(sorted(find.items(), key=lambda item: item[1]))
-    print('Maximum score is', find[list(find.keys())[0]])
+    print('Maximum score is', max(find.items(), key=operator.itemgetter(1))[1], 'for',
+          max(find.items(), key=operator.itemgetter(1))[0])
+    print('Maximum score is', min(find.items(), key=operator.itemgetter(1))[1], 'for',
+          min(find.items(), key=operator.itemgetter(1))[0])
 
+
+def func4():
+    f = open("positive.txt", "w")
+
+    key = list(score.keys())
+    for k in key:
+        t = round((score[k] / freq[k]), 2)
+        find[k] = t
+
+
+def rating(s):
+    if s > 2.01:
+        return 'positive'
+    elif s < 1.99:
+        return 'negative'
+    else:
+        return 'neutral'
 
 
 def start():
@@ -73,12 +94,8 @@ def start():
             inpt_1 = str(input('which word? '))
             s = func1(inpt_1)
             print('score =', s)
-            if s > 2.01:
-                print(inpt_1, 'is', 'positive')
-            elif s < 1.99:
-                print(inpt_1, 'is', 'negative')
-            else:
-                print(inpt_1, 'is', 'neutral')
+            out = rating(s)
+            print(inpt_1, 'is', out)
             print()
 
         if choose == 2:
@@ -94,7 +111,15 @@ def start():
 
         if choose == 3:
             func3()
+            print()
 
+        if choose == 4:
+            func4()
+            print('Successful')
+            print()
+
+        if choose == 5:
+            break
 
 
 main()
